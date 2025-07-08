@@ -22,7 +22,7 @@ webapi/
 │   ├── nginx/
 │   │   └── default.conf
 │   ├── mysql/
-│   │   └── dump.sql ← (opcional, si no contiene datos sensibles)
+│   │   └── dump.sql ← (colocar manualmente)
 │   └── php/
 │       └── Dockerfile
 ├── public/
@@ -41,7 +41,7 @@ webapi/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu_usuario/tu_repositorio.git
+git clone https://github.com/joanccresources/solgas-webapi.git
 cd webapi
 ```
 
@@ -57,7 +57,7 @@ cp .env.example .env
 
 ---
 
-### 3. Colocar el archivo `dump.sql` (si aplica)
+### 3. Colocar el archivo `dump.sql`
 
 Si quieres importar datos de ejemplo:
 
@@ -87,7 +87,6 @@ docker compose up --build
 ```bash
 docker compose exec laravel-app composer install
 docker compose exec laravel-app php artisan key:generate
-docker compose exec laravel-app php artisan migrate
 ```
 
 > ⚠️ Asegurate de tener conexión a internet si vas a usar una base SQL Server remota.
