@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests\WEB\v1\Seal;
-
+use App\Rules\RecaptchaLow;
 use Illuminate\Foundation\Http\FormRequest;
 
 class VerifySealRequest extends FormRequest
@@ -22,7 +22,8 @@ class VerifySealRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => 'required|string|size:6'
+            'code' => 'required|string|size:6',
+            'q_recaptcha' => ['required', new RecaptchaLow()],
         ];
     }
     public function messages(): array

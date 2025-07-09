@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests\WEB\v1\Client;
-
+use App\Rules\RecaptchaLow;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterClientRequest extends FormRequest
@@ -29,6 +29,7 @@ class RegisterClientRequest extends FormRequest
             'direccion' => 'nullable|string|max:255',
             'ciudad' => 'required|string|max:255',
             'acepto_politicas' => 'required|boolean',
+            'q_recaptcha' => ['required', new RecaptchaLow()],
         ];
     }
 

@@ -14,12 +14,12 @@ class ClientRegistrationController extends Controller
     public function __invoke(RegisterClientRequest $request)
     {
         // Validar header personalizado
-        if ($request->header('X-SOLGAS-TOKEN') !== 'solgas-public-access') {
-            return response()->json([
-                'success' => false,
-                'message' => 'Acceso no autorizado.',
-            ], 401);
-        }
+        // if ($request->header('X-SOLGAS-TOKEN') !== 'solgas-public-access') {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Acceso no autorizado.',
+        //     ], 401);
+        // }
         $validated = $request->validated();
         $validated['fecha_registro'] = Carbon::now();
 

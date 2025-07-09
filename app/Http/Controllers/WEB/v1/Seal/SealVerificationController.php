@@ -13,12 +13,12 @@ class SealVerificationController extends Controller
     public function __invoke(VerifySealRequest $request)
     {
         // Validar header personalizado
-        if ($request->header('X-SOLGAS-TOKEN') !== 'solgas-public-access') {
-            return response()->json([
-                'success' => false,
-                'message' => 'Acceso no autorizado.',
-            ], 401);
-        }
+        // if ($request->header('X-SOLGAS-TOKEN') !== 'solgas-public-access') {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Acceso no autorizado.',
+        //     ], 401);
+        // }
         $code = $request->validated()['code'];
         // Carga con relaciones necesarias
         // $seal = Seal::where('codigo_alfanumerico', $code)->first();
