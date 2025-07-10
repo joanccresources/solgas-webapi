@@ -21,9 +21,10 @@ class RegisterClientRequest extends FormRequest
      */
     public function rules(): array
     {
+        // 'documento_identidad' => 'required|numeric|unique:sqlsrv_cilindros.Clientes,documento_identidad',
         return [
             'nombres_apellidos' => 'required|string|max:255',
-            'documento_identidad' => 'required|numeric|unique:sqlsrv_cilindros.Clientes,documento_identidad',
+            'documento_identidad' => 'required|numeric',
             'telefono' => 'required|numeric',
             'correo_electronico' => 'nullable|email|max:255',
             'direccion' => 'nullable|string|max:255',
@@ -35,11 +36,11 @@ class RegisterClientRequest extends FormRequest
 
     public function messages(): array
     {
+        // 'documento_identidad.unique' => 'Ya existe un cliente registrado con este documento de identidad.',
         return [
             'nombres_apellidos.required' => 'El nombre y apellido es obligatorio.',
             'documento_identidad.required' => 'El documento de identidad es obligatorio.',
             'documento_identidad.numeric' => 'El documento de identidad debe ser numérico.',
-            'documento_identidad.unique' => 'Ya existe un cliente registrado con este documento de identidad.',
             'telefono.required' => 'El teléfono es obligatorio.',
             'telefono.numeric' => 'El teléfono debe ser numérico.',
             'correo_electronico.email' => 'El correo electrónico no tiene un formato válido.',

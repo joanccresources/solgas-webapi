@@ -8,6 +8,7 @@ use App\Models\Client;
 use App\Models\Seal;
 use App\Models\ValidationLog;
 use Illuminate\Support\Carbon;
+use Illuminate\Database\QueryException;
 
 class ClientRegistrationController extends Controller
 {
@@ -23,7 +24,26 @@ class ClientRegistrationController extends Controller
         $validated = $request->validated();
         $validated['fecha_registro'] = Carbon::now();
 
-        $client = Client::create($validated);
+        // $client = Client::create($validated);
+        // try {
+        //     $client = Client::create($validated);
+        // } catch (QueryException $e) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'No se pudo registrar el cliente. Puede que ya exista un registro con el mismo documento de identidad.',
+        //         'error' => $e->getMessage(), // opcional para debug
+        //     ], 409); // Conflicto
+        // }
+        $client = Client::where('documento_identidad', $validated['documento_identidad'])->first();
+        if ($client) {
+            // Si ya existe, actualizamos su info
+            $client->update($validated);
+        } else {
+            // Si no existe, lo creamos
+            $client = Client::create($validated);
+        }
+
+
 
         // Obtener código y estado desde frontend Precintos
         $code = $request->input('codigo_alfanumerico');
