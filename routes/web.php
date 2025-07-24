@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 // SQL SERVER
 use App\Http\Controllers\WEB\v1\Seal\SealVerificationController;
 use App\Http\Controllers\WEB\v1\Client\ClientRegistrationController;
+use App\Http\Controllers\WEB\v1\CaseRegister\CaseRegisterController;
 
 Route::middleware(['throttle:web'])->group(function () {
     Route::prefix('page')->group(function () {
@@ -69,10 +70,12 @@ Route::middleware(['throttle:web'])->group(function () {
 // SQL SERVER
 Route::post('seal/verify', SealVerificationController::class);
 Route::post('clients/register', ClientRegistrationController::class);
+Route::post('case/register', CaseRegisterController::class);
+
 Route::prefix('test')->group(function () {
     Route::get('/sqlsrv', function () {
         try {
-            $registros = \App\Models\Seal::limit(15)->get();
+            $registros = \App\Models\Seal::limit(5)->get();
             return response()
                 ->json($registros)
                 ->header("Cache-Control", "no-store")
