@@ -118,7 +118,7 @@ return [
             'password' => env('SQLSRV_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
-            'encrypt' => 'yes',
+            'encrypt' => 'optional',
             'trust_server_certificate' => true,
         ],
     ],
