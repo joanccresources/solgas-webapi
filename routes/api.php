@@ -39,6 +39,9 @@ use App\Http\Controllers\API\v1\Setting\Permission\PermissionController;
 use App\Http\Controllers\API\v1\Setting\Role\RoleController;
 use App\Http\Controllers\API\v1\Setting\User\UserController;
 use Illuminate\Support\Facades\Route;
+// ADD
+use App\Http\Controllers\API\v1\CaseRegister\CaseRegisterController;
+use App\Http\Controllers\API\v1\Client\ClientRegistrationController;
 
 Route::post('login', [LoginController::class, 'login'])->middleware('throttle:login');
 
@@ -48,6 +51,10 @@ Route::middleware(['throttle:settingPassword'])->group(function () {
 });
 
 Route::prefix('auth')->middleware(['auth:sanctum', 'throttle:auth'])->group(function () {
+    // ADD
+    Route::get('verifica-tu-balon-case-registers', CaseRegisterController::class);
+    Route::get('verifica-tu-balon-clients', ClientRegistrationController::class);
+
     #logout
     Route::post('logout', [LoginController::class, 'logout']);
 
