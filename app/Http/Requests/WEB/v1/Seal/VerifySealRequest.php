@@ -24,6 +24,9 @@ class VerifySealRequest extends FormRequest
         return [
             'code' => 'required|string|size:6',
             'q_recaptcha' => ['required', new RecaptchaLow()],
+            'ubicacion' => 'sometimes|array',
+            'ubicacion.pais'   => 'sometimes|nullable|string|max:100',
+            'ubicacion.region' => 'sometimes|nullable|string|max:150',
         ];
     }
     public function messages(): array

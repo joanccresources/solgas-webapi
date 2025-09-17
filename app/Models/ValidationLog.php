@@ -19,5 +19,7 @@ class ValidationLog extends Model
         'ip_origen',
         'dispositivo',
         'exito',
+        'pais',
+        'region'
     ];
 }

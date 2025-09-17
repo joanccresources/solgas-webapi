@@ -34,6 +34,10 @@ class SealVerificationController extends Controller
                 'documento_identidad' => null,
                 'ip_origen' => $request->input("ip_origen") ?? $request->ip(),
                 'dispositivo' => $request->input('dispositivo'), // opcional desde el frontend
+                // new
+                'pais' => $request->input('ubicacion.pais'),
+                'region'=> $request->input('ubicacion.region'),
+                // 'ciudad' => $request->input('ubicacion.ciudad'),
                 'exito' => 2,
             ]);
 
@@ -65,6 +69,10 @@ class SealVerificationController extends Controller
                 'documento_identidad' => null,
                 'ip_origen' => $request->input("ip_origen") ?? $request->ip(),
                 'dispositivo' => $request->input('dispositivo'), // opcional desde el frontend
+                // new
+                'pais' => $request->input('ubicacion.pais'),
+                'region'=> $request->input('ubicacion.region'),
+                // 'ciudad' => $request->input('ubicacion.ciudad'),
                 'exito' => 1,
             ]);
 
@@ -90,6 +98,10 @@ class SealVerificationController extends Controller
             'documento_identidad' => null,
             'ip_origen' => $request->input("ip_origen") ?? $request->ip(),
             'dispositivo' => $request->input('dispositivo'), // opcional desde el frontend
+            // new
+            'pais' => $request->input('ubicacion.pais'),
+            'region'=> $request->input('ubicacion.region'),
+            // 'ciudad' => $request->input('ubicacion.ciudad'),
             'exito' => 3,
         ]);
 
